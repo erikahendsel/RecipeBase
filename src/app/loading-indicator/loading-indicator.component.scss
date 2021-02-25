@@ -1,0 +1,59 @@
+@import "../../style_variables.scss";
+
+.loading-container {
+  position: absolute;
+  top: 20%;
+}
+.loading-container ul {
+  position: relative;
+}
+.loading-container ul li {
+  list-style: none;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  animation: anime 1s infinite linear;
+}
+@keyframes anime {
+  0% {
+    background: $primary-color;
+    transform: translateY(0);
+  }
+  30% {
+    background: transparent;
+  }
+  50% {
+    background: rgb(122, 192, 137);
+    transform: translateY(-20px);
+  }
+  100% {
+    background: $sub-color;
+    transform: translateY(0);
+  }
+}
+.loading-container ul li:nth-child(1) {
+  animation-delay: 0s;
+}
+.loading-container ul li:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.loading-container ul li:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.loading-container ul li:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.loading-container ul li:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.loading-container ul li:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+#loading {
+  margin-top: 15px;
+  font-size: $font-big;
+  font-weight: bold;
+}

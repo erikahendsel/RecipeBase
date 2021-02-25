@@ -1,1 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "./style_variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $main-font;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+header {
+  background: $primary-color;
+  font-size: $font-big;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a.logo {
+    font-weight: bold;
+    font-family: $secondary-font;
+    color: $sub-color;
+  }
+  .menu-bar {
+    display: flex;
+    align-items: center;
+  }
+
+  nav {
+    width: 100%;
+    ul {
+      display: flex;
+      list-style: none;
+      justify-content: flex-end;
+    }
+    li {
+      a {
+        display: block;
+        padding: 1.3em 1em;
+        transition: all 0.2s ease;
+
+        &:hover {
+          transition: all 0.2s ease;
+          background: darken($primary-color, 10%);
+        }
+      }
+    }
+  }
+}

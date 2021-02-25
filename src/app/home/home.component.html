@@ -1,0 +1,46 @@
+<div *ngIf='recipes' class="cards">
+
+    <div *ngFor='let hit of recipes.hits let i = index' [attr.data-index]="i" class="recipe-card" (click)='openRecipeDetails($event, hit.recipe.label, recipes.hits, hit.recipe)' >
+        <div class="content">
+            <p class="recipe-title">{{hit.recipe.label}}</p>
+            <p>Source: {{hit.recipe.source}}</p>
+            <p>Coocking time: {{hit.recipe.totalTime > 0 ?  hit.recipe.totalTime + ' minutes' : 'Depends on you'}}</p>
+            <p>Calories: {{formatNumber(hit.recipe.calories)}}</p>
+        </div>
+        <img src={{hit.recipe.image}}/>
+    </div>
+    <div id="comp-render" *ngIf="displayRecipeDetails">
+        <div class="popover">
+            <div class="close-btn">
+                <button (click)='closeRecipeDetails()'>Close</button>
+            </div>
+           
+            <div class="popover-container">
+                <p class="recipe-title">{{recipeTitle.label}}</p>
+                <div class="popover-content">
+                    <div>
+                        <img src={{recipeTitle.image}}/>
+                    </div>
+                 
+             
+                <div class="recipe-details">
+                    <p>Source: {{recipeTitle.source}}</p>
+                    <p>Coocking time: {{recipeTitle.totalTime > 0 ?  recipeTitle.totalTime + ' minutes' : 'Depends on you'}}</p>
+                    <p>Calories: {{formatNumber(recipeTitle.calories)}}</p>
+                    <p *ngFor='let dietlabel of recipeTitle.dietLabels'>Diet Labels: {{dietlabel}}</p>
+                </div>
+            </div>
+            </div>
+   
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf='errorMessage'>
+    <p>Sorry, an error accured fetching all recipes. Error message from server:</p>
+        <p>{{errorMessage.statusText}}</p>
+</div>
+
+<!-- *ngIf="loading" -->
+<app-loading-indicator *ngIf="loading">Loading...</app-loading-indicator>
