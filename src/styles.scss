@@ -15,6 +15,7 @@ body {
 .container {
   width: 80%;
   margin: 0 auto;
+  padding-top: 4em;
 }
 header {
   background: $primary-color;
@@ -28,6 +29,7 @@ header {
     font-weight: bold;
     font-family: $secondary-font;
     color: $sub-color;
+    display: none;
   }
   .menu-bar {
     display: flex;

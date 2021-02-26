@@ -47,20 +47,18 @@ export class HomeComponent implements OnInit {
   }
 
   openRecipeDetails(event: any, recipeLabel: any, recipeArray: any, rndRecipe: any) {
-    // this.recipeFinalArray = [];
     this.displayRecipeDetails = true;
     document.querySelector('body').style.overflowY = 'hidden';
-    // recipeArray.map(label => this.recipeFinalArray.push(label.recipe.label))
-    // const s = this.recipeFinalArray.filter(t => t === recipeLabel)
-    // const a = s.toString();
-    // this.recipeTitle = a;
-    // console.log(rndRecipe);
     this.recipeTitle = rndRecipe;
   }
 
-  closeRecipeDetails() {
+  closeRecipeDetails(event: any) {
     document.querySelector('body').style.overflowY = 'visible';
-    this.displayRecipeDetails = false;
+    // this.displayRecipeDetails = false;
+    const classNames = event.target.className;
+    if(classNames === 'close-btn' ||classNames === 'popover-shadow') {
+      this.displayRecipeDetails = false;
+    }
   }
 
 }

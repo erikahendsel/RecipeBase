@@ -10,15 +10,16 @@
         <img src={{hit.recipe.image}}/>
     </div>
     <div id="comp-render" *ngIf="displayRecipeDetails">
+        <div class="popover-shadow" (click)='closeRecipeDetails($event)'>
         <div class="popover">
-            <div class="close-btn">
-                <button (click)='closeRecipeDetails()'>Close</button>
+            <div class="close">
+                <button class="close-btn">Close</button>
             </div>
            
             <div class="popover-container">
                 <p class="recipe-title">{{recipeTitle.label}}</p>
                 <div class="popover-content">
-                    <div>
+                    <div class="popover-recipe-image">
                         <img src={{recipeTitle.image}}/>
                     </div>
                  
@@ -27,12 +28,24 @@
                     <p>Source: {{recipeTitle.source}}</p>
                     <p>Coocking time: {{recipeTitle.totalTime > 0 ?  recipeTitle.totalTime + ' minutes' : 'Depends on you'}}</p>
                     <p>Calories: {{formatNumber(recipeTitle.calories)}}</p>
-                    <p *ngFor='let dietlabel of recipeTitle.dietLabels'>Diet Labels: {{dietlabel}}</p>
+
+                    <p>Diet Labels:<span *ngFor="let dietLabel of recipeTitle.dietLabels; last as isLast"> {{dietLabel}}<span *ngIf="!isLast">,</span></span></p>
+
+                    <p>Official recipe link: <a href={{recipeTitle.url}} target="_blank">here</a></p>
+                  
+                    <p>Health Labels:<span *ngFor="let healthLabel of recipeTitle.healthLabels; last as isLast"> {{healthLabel}}<span *ngIf="!isLast">,</span> </span></p>
+                 
                 </div>
+
+                <div class="bottom-content">
+                    <p>Ingredients:<span *ngFor="let ingredientLine of recipeTitle.ingredientLines; last as isLast"> {{ingredientLine}}<span *ngIf="!isLast">,</span> </span></p>
+                </div>
+           
             </div>
             </div>
    
         </div>
+    </div>
     </div>
 
 </div>
