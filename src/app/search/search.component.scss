@@ -1,0 +1,23 @@
+@import "../../style_variables.scss";
+
+.search-container {
+  background-color: rgb(92, 55, 128);
+  width: 80%;
+  margin: 0 auto;
+  height: 20em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.search-field {
+  input {
+    font-size: $font-big;
+    padding: 0.5em;
+  }
+  button {
+    border: none;
+    font-size: $font-big;
+    padding: 0.5em;
+  }
+}

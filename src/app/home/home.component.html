@@ -1,70 +1,30 @@
 
-<div>
-    <form action="search-form">
-        <input class="search-bar" type="text" (change)='updateSearch($event)' ngModel minlength="4"/>
-        <button class="search-button" type="submit" (click)='fireSearch($event)'>Search</button>
-    </form>
+<app-search></app-search>
+
+
+<div *ngIf='_http.errorMessage'>
+    <p>Sorry, an error accured fetching all recipes. Error message from server:</p>
+        <p>{{_http.errorMessage.statusText}}</p>
 </div>
 
-<div *ngIf='recipes' class="cards">
-    <div *ngFor='let hit of recipes.hits'class="recipe-card" (click)='openRecipeDetails(hit.recipe)' >
+<div *ngIf='_http.recipeList' class="cards">
+    <div *ngFor='let hit of _http.recipeList.hits'class="recipe-card" (click)='openRecipeDetails(hit.recipe)' >
         <div class="content">
             <p class="recipe-title">{{hit.recipe.label}}</p>
             <p>Source: {{hit.recipe.source}}</p>
             <p>Coocking time: {{hit.recipe.totalTime > 0 ?  hit.recipe.totalTime + ' minutes' : 'Depends on you'}}</p>
-            <p>Calories: {{formatNumber(hit.recipe.calories)}}</p>
+            <p>Calories: {{_http.formatNumber(hit.recipe.calories)}}</p>
         </div>
         <img src={{hit.recipe.image}}/>
     </div>
 
     <!-- PopUp section -->
-    <div id="comp-render" *ngIf="displayRecipeDetails">
-        <div class="popover-shadow" (click)='closeRecipeDetails($event)'>
-        <div class="popover">
-            <div class="close">
-                <button class="close-btn">Close</button>
-            </div>
-           
-            <div class="popover-container">
-                <p class="recipe-title">{{singleRecipeDetails.label}}</p>
-                <div class="popover-content">
-                    <div class="popover-recipe-image">
-                        <img src={{singleRecipeDetails.image}}/>
-                    </div>
-                 
-             
-                <div class="recipe-details">
-                    <p>Source: {{singleRecipeDetails.source}}</p>
-                    <p>Coocking time: {{singleRecipeDetails.totalTime > 0 ?  singleRecipeDetails.totalTime + ' minutes' : 'Depends on you'}}</p>
-                    <p>Calories: {{formatNumber(singleRecipeDetails.calories)}}</p>
-
-                    <p>Diet Labels:<span *ngFor="let dietLabel of singleRecipeDetails.dietLabels; last as isLast"> {{dietLabel}}<span *ngIf="!isLast">,</span></span></p>
-
-                    <p>Official recipe link: <a href={{singleRecipeDetails.url}} target="_blank">here</a></p>
-                  
-                    <p>Health Labels:<span *ngFor="let healthLabel of singleRecipeDetails.healthLabels; last as isLast"> {{healthLabel}}<span *ngIf="!isLast">,</span> </span></p>
-                 
-                </div>
-
-                <div class="bottom-content">
-                    <p>Ingredients:</p>
-                    <ul *ngFor="let ingredientLine of singleRecipeDetails.ingredientLines">
-                        <li>{{ingredientLine}}</li>
-                    </ul>
-                </div>
-           
-            </div>
-            </div>
-   
-        </div>
+    <div id="comp-render" *ngIf="_http.displayRecipeDetails">
+        <app-recipe-details></app-recipe-details>
     </div>
-    </div>
+    
 </div>
 
-<div *ngIf='errorMessage'>
-    <p>Sorry, an error accured fetching all recipes. Error message from server:</p>
-        <p>{{errorMessage.statusText}}</p>
-</div>
 
 <!-- *ngIf="loading" -->
-<app-loading-indicator *ngIf="loading">Loading...</app-loading-indicator>
+<app-loading-indicator *ngIf="_http.loading">Loading...</app-loading-indicator>
