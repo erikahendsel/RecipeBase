@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { InformationComponent } from './information/information.component';
 import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
     HomeComponent,
     InformationComponent,
     LoadingIndicatorComponent,
-    RecipeDetailsComponent
+    RecipeDetailsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

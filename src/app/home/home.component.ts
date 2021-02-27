@@ -14,19 +14,21 @@ export class HomeComponent implements OnInit {
   errorMessage: any;
   loading = false;
   displayRecipeDetails = false;
-  recipeTitle: any;
-  recipeFinalArray: Array<string> = [];
+  singleRecipeDetails: any;
+
+  onchangeInput: string;
+  savedInput: string = 'top';
+
 
   constructor(private _http: RecipeHttpService) { }
 
   ngOnInit(): void {
-      // this._http.getRecipes().subscribe(
-      //   data => {
-      //   this.recipes = data;
-      //   console.log(this.recipes)
-      // } )
+    this.randomfunc();
+  }
+
+  randomfunc() {
     this.loading = true;
-    this._http.getRecipes()
+    this._http.getRecipes(this.savedInput)
     .pipe(
       finalize(() => this.loading = false)
       )
@@ -46,19 +48,30 @@ export class HomeComponent implements OnInit {
     return (Math.round(num*100)/100).toFixed(0); 
   }
 
-  openRecipeDetails(event: any, recipeLabel: any, recipeArray: any, rndRecipe: any) {
+  openRecipeDetails(rndRecipe: any) {
     this.displayRecipeDetails = true;
     document.querySelector('body').style.overflowY = 'hidden';
-    this.recipeTitle = rndRecipe;
+    this.singleRecipeDetails = rndRecipe;
   }
 
   closeRecipeDetails(event: any) {
     document.querySelector('body').style.overflowY = 'visible';
     // this.displayRecipeDetails = false;
     const classNames = event.target.className;
-    if(classNames === 'close-btn' ||classNames === 'popover-shadow') {
+    if(classNames === 'close-btn' || classNames === 'popover-shadow') {
       this.displayRecipeDetails = false;
     }
   }
 
+  updateSearch(event: any) {
+    console.log(event.target.value)
+    this.onchangeInput = event.target.value;
+  }
+
+  fireSearch(event: any) {
+    event.preventDefault();
+    this.savedInput = this.onchangeInput;
+    console.log(this.savedInput)
+    this.randomfunc()
+  }
 }
