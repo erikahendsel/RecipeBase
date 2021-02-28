@@ -12,11 +12,14 @@ body {
   font-family: $main-font;
 }
 
-// .container {
-//   width: 80%;
-//   margin: 0 auto;
-//   padding-top: 4em;
-// }
+.container {
+  // width: 80%;
+  // margin: 0 auto;
+  // padding-top: 4em;
+
+  //Forces footer to stay at the bottom of the page. Check footer.scss class .footer
+  min-height: calc(100vh - 200px - 70.79px - 2em);
+}
 header {
   background: $primary-color;
   font-size: $font-big;

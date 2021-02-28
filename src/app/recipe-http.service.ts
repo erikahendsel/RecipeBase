@@ -1,14 +1,13 @@
-import { Injectable } from '@angular/core';
+import { ElementRef, Injectable, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../src/environments/environment'
 import { finalize } from 'rxjs/operators';
-
+import { gsap } from 'gsap';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeHttpService {
-  
   recipeList: any = [];
   errorMessage: any;
   loading = false;
@@ -17,6 +16,7 @@ export class RecipeHttpService {
 
   onchangeInput: string;
   savedInput: string = 'top';
+  elementFromChild:any;
 
   constructor(private http: HttpClient) { }
 
@@ -38,12 +38,23 @@ export class RecipeHttpService {
       success => {
         this.recipeList = success;
         console.log('success:', success);
+        this.randomFunction();
       },
       error =>{
         this.errorMessage = error;
         console.log('error:', typeof this.errorMessage , this.errorMessage);
       },
     );
+  }
+  randomFunction() {
+    gsap.from(this.elementFromChild.nativeElement, {
+      delay: .1,
+      duration: 0.4,
+      opacity: 0,
+      y: -20,
+      stagger: 0.15,
+    });
+    console.log(this.elementFromChild)
   }
 
 }

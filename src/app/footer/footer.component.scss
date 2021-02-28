@@ -1,0 +1,22 @@
+@import "../../style_variables.scss";
+
+footer {
+  background-color: $primary-color;
+  color: $secondary-color;
+  width: 100%;
+  margin-top: 2em;
+
+  //added fixed height. Works together with class .container in styles.scss
+  height: 200px;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 2em;
+  width: 80%;
+  margin: 0 auto;
+}
+
+ul {
+  list-style: none;
+}

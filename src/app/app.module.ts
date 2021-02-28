@@ -9,6 +9,7 @@ import { InformationComponent } from './information/information.component';
 import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { SearchComponent } from './search/search.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SearchComponent } from './search/search.component';
     InformationComponent,
     LoadingIndicatorComponent,
     RecipeDetailsComponent,
-    SearchComponent
+    SearchComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

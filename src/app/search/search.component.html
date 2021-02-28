@@ -1,11 +1,14 @@
 <section>
     <div class="search-container">
-        <div class="search-field">
+        <div class="search-field" #searchField>
             <p>Search for recipes</p>
             <form action="search-form">
                 <input class="search-bar" type="text" (change)='updateSearch($event)' ngModel minlength="4"/>
                 <button class="search-button" type="submit" (click)='fireSearch($event)'>Search</button>
             </form>
+        </div>
+        <div class="hero-container">
+            <img src="../../assets/images/breakfast.svg" alt="breakfast" />
         </div>
     </div>
 </section>
