@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { RecipeHttpService } from '../recipe-http.service';
+
 
 @Component({
   selector: 'app-recipe-details',
@@ -20,5 +21,6 @@ export class RecipeDetailsComponent implements OnInit {
       document.querySelector('body').style.overflowY = 'visible';
     }
   }
+
 
 }

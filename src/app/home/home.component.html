@@ -1,30 +1,30 @@
 
-<app-search></app-search>
+<div>
+    <app-search></app-search>
 
 
-<div *ngIf='_http.errorMessage'>
-    <p>Sorry, fetching limit reached. Please wait 1 minute and then refresh the page.</p>
-</div>
-
-<div #recipeCard>
-    <div  *ngIf='_http.recipeList' class="cards" >
-        <div *ngFor='let hit of _http.recipeList.hits' class="recipe-card" (click)='openRecipeDetails(hit.recipe)' #recipeCard >
-            <div class="content" >
-                <p class="recipe-title">{{hit.recipe.label}}</p>
-                <p>Source: {{hit.recipe.source}}</p>
-                <p>Coocking time: {{hit.recipe.totalTime > 0 ?  hit.recipe.totalTime + ' minutes' : 'Depends on you'}}</p>
-                <p>Calories: {{_http.formatNumber(hit.recipe.calories)}}</p>
+    <div *ngIf='_http.errorMessage'>
+        <p>Sorry, fetching limit reached. Please wait 1 minute and then refresh the page.</p>
+    </div>
+    
+    <div>
+        <div  *ngIf='_http.recipeList' class="cards" >
+            <div *ngFor='let hit of _http.recipeList.hits' class="recipe-card" (click)='openRecipeDetails(hit.recipe)' #recipeCard >
+                <div class="content" >
+                    <p class="recipe-title">{{hit.recipe.label}}</p>
+                    <p>Source: {{hit.recipe.source}}</p>
+                    <p>Coocking time: {{hit.recipe.totalTime > 0 ?  hit.recipe.totalTime + ' minutes' : 'Depends on you'}}</p>
+                    <p>Calories: {{_http.formatNumber(hit.recipe.calories)}}</p>
+                </div>
+                <img src={{hit.recipe.image}}/>
             </div>
-            <img src={{hit.recipe.image}}/>
-        </div>
-    </div>    
+        </div>    
+    </div>
 </div>
-
 <!-- PopUp section -->
 <div id="comp-render" *ngIf="_http.displayRecipeDetails">
     <app-recipe-details></app-recipe-details>
 </div>
-
 
 
 <!-- *ngIf="loading" -->

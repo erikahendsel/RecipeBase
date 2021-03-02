@@ -13,20 +13,20 @@
              
          
             <div class="recipe-details">
-                <p>Source: {{_http.singleRecipeDetails.source}}</p>
-                <p>Coocking time: {{_http.singleRecipeDetails.totalTime > 0 ?  _http.singleRecipeDetails.totalTime + ' minutes' : 'Depends on you'}}</p>
-                <p>Calories: {{_http.formatNumber(_http.singleRecipeDetails.calories)}}</p>
+                <p><b>Source:</b> {{_http.singleRecipeDetails.source}}</p>
+                <p><b>Coocking time:</b> {{_http.singleRecipeDetails.totalTime > 0 ?  _http.singleRecipeDetails.totalTime + ' minutes' : 'Depends on you'}}</p>
+                <p><b>Calories:</b> {{_http.formatNumber(_http.singleRecipeDetails.calories)}}</p>
 
-                <p>Diet Labels:<span *ngFor="let dietLabel of _http.singleRecipeDetails.dietLabels; last as isLast"> {{dietLabel}}<span *ngIf="!isLast">,</span></span></p>
+                <p><b>Diet Labels:</b><span *ngFor="let dietLabel of _http.singleRecipeDetails.dietLabels; last as isLast"> {{dietLabel}}<span *ngIf="!isLast">,</span></span></p>
 
-                <p>Official recipe link: <a href={{_http.singleRecipeDetails.url}} target="_blank">here</a></p>
+                <p><b>Official recipe link: </b> <a href={{_http.singleRecipeDetails.url}} target="_blank">here</a></p>
               
-                <p>Health Labels:<span *ngFor="let healthLabel of _http.singleRecipeDetails.healthLabels; last as isLast"> {{healthLabel}}<span *ngIf="!isLast">,</span> </span></p>
+                <p><b>Health Labels:</b><span *ngFor="let healthLabel of _http.singleRecipeDetails.healthLabels; last as isLast"> {{healthLabel}}<span *ngIf="!isLast">,</span> </span></p>
              
             </div>
 
             <div class="bottom-content">
-                <p>Ingredients:</p>
+                <p><b>Ingredients:</b></p>
                 <ul *ngFor="let ingredientLine of _http.singleRecipeDetails.ingredientLines">
                     <li>{{ingredientLine}}</li>
                 </ul>

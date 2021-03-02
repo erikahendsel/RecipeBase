@@ -4,16 +4,16 @@
       <a href="#" class="logo">RecipeBase</a>
       <nav>
         <ul>
-          <li><a href="#" routerLink='/'>Home</a></li>
-          <li><a href="#" routerLink='/information'>Information</a></li>
+          <li><a href="#" routerLink='/' routerLinkActive="active">Home</a></li>
+          <li><a href="#" routerLink='/information' routerLinkActive="active">Information</a></li>
         </ul>
       </nav>
     </div>
   </div>
 </header>
 
-<div class="container">
-  <router-outlet></router-outlet>
+<div class="container routeContainer"  [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
 </div>
 
 <app-footer></app-footer>

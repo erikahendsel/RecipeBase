@@ -8,6 +8,7 @@ footer {
 
   //added fixed height. Works together with class .container in styles.scss
   height: 200px;
+  z-index: 20;
 }
 .footer {
   display: flex;

@@ -7,9 +7,35 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+html,
+.popover {
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: lighten($primary-color, 10%);
+  }
+  &::-webkit-scrollbar-track {
+    background: $secondary-color;
+  }
+}
+.popover {
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+    border-radius: 150px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 150px;
+  }
+}
 body {
   font-family: $main-font;
+}
+p {
+  line-height: 26px;
 }
 
 .container {
@@ -19,6 +45,12 @@ body {
 
   //Forces footer to stay at the bottom of the page. Check footer.scss class .footer
   min-height: calc(100vh - 200px - 70.79px - 2em);
+}
+.routeContainer {
+  position: relative;
+}
+.routeContainer > * {
+  display: block;
 }
 header {
   background: $primary-color;
