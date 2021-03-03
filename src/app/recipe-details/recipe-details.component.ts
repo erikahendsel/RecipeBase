@@ -18,7 +18,7 @@ export class RecipeDetailsComponent implements OnInit {
     const classNames = event.target.className;
     if(classNames === 'close-btn' || classNames === 'popover-shadow') {
       this._http.displayRecipeDetails = false;
-      document.querySelector('body').style.overflowY = 'visible';
+      document.querySelector('html').style.overflowY = 'visible';
     }
   }
 

@@ -17,6 +17,7 @@
   min-height: 400px;
   cursor: pointer;
   transition: all 0.2s ease;
+  background-color: $secondary-color;
 
   &:hover {
     background-color: $primary-color;

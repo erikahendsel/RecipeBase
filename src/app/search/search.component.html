@@ -3,7 +3,7 @@
         <div class="search-field">
             <p>Search for recipes</p>
             <form action="search-form">
-                <input class="search-bar" type="text" (change)='updateSearch($event)' ngModel minlength="4"/>
+                <input class="search-bar" type="text" (change)='updateSearch($event)'/>
                 <button class="search-button" type="submit" (click)='fireSearch($event)'>Search</button>
             </form>
         </div>

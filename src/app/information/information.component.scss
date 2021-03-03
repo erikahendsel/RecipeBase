@@ -1,0 +1,26 @@
+@import "../../style_variables.scss";
+
+.information-container {
+  width: 80%;
+  margin: 0 auto;
+}
+.info-image {
+  float: left;
+  width: 50%;
+  height: auto;
+  padding-right: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.title {
+  margin-bottom: 1em;
+  font-size: $font-big;
+}
+.faq {
+  clear: both;
+}
+.row {
+  margin: 1em 0;
+}
+.question {
+  font-weight: bold;
+}
