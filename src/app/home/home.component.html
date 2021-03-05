@@ -8,8 +8,8 @@
     </div>
     
     <div>
-        <div  *ngIf='_http.recipeList' class="cards" @myInsertRemoveTrigger>
-            <div *ngFor='let hit of _http.recipeList.hits' class="recipe-card" (click)='openRecipeDetails(hit.recipe)' #recipeCard >
+        <div *ngIf='_http.recipeList' class="cards">
+            <div *ngFor='let hit of _http.recipeList.hits' class="recipe-card" (click)='openRecipeDetails(hit.recipe)' #recipeCard @recipeAnimationTrigger>
                 <div class="content" >
                     <p class="recipe-title">{{hit.recipe.label}}</p>
                     <p>Source: {{hit.recipe.source}}</p>

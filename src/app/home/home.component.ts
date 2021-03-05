@@ -17,13 +17,13 @@ import { trigger, transition, animate, style, query, stagger } from '@angular/an
         ])
       ])
     ]),
-    trigger('myInsertRemoveTrigger', [
+    trigger('recipeAnimationTrigger', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('100ms', style({ opacity: 1 })),
+        animate('500ms', style({ opacity: 1 })),
       ]),
       transition(':leave', [
-        animate('100ms', style({ opacity: 0 }))
+        animate('500ms', style({ opacity: 0 }))
       ])
     ]),
   ]
@@ -31,6 +31,7 @@ import { trigger, transition, animate, style, query, stagger } from '@angular/an
 
 export class HomeComponent implements OnInit, OnChanges {
   @HostBinding('@pageAnimations')
+  // @HostBinding('@recipeAnimationTrigger')
   @ViewChild('recipeCard', {static: true}) recipeCard: ElementRef<HTMLDivElement>;
 
   constructor(public _http: RecipeHttpService) {}
