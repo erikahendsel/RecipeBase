@@ -10,9 +10,9 @@ import { trigger, transition, animate, style, query, stagger } from '@angular/an
     trigger('pageAnimations', [
       transition(':enter', [
         query('.search-field', [
-          style({opacity: 0, transform: 'translateY(-100px)'}),
+          style({opacity: 0}),
           stagger(-30, [
-            animate('300ms cubic-bezier(0.35, 0, 0.25, 1)', style({ opacity: 1, transform: 'none' }))
+            animate('1000ms cubic-bezier(0.35, 0, 0.25, 1)', style({ opacity: 1}))
           ])
         ])
       ])
@@ -29,10 +29,10 @@ import { trigger, transition, animate, style, query, stagger } from '@angular/an
     trigger('popUpAnimation', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('500ms', style({ opacity: 1 })),
+        animate('200ms', style({ opacity: 1 })),
       ]),
       transition(':leave', [
-        animate('500ms', style({ opacity: 0 }))
+        animate('200ms', style({ opacity: 0 }))
       ])
     ]),
   ]

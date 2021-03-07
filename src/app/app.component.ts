@@ -21,7 +21,7 @@ import { slideInAnimation } from './animations';
   ]
 })
 export class AppComponent {
-  title = 'food-app-angular';
+  title = 'RecipeBase';
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
