@@ -2,31 +2,40 @@
 <div>
     <app-search></app-search>
 
+    <!-- *ngIf="_http.loading" -->
+    <div class="home-container">
+        <app-loading-indicator *ngIf="_http.loading">Loading...</app-loading-indicator>
 
-    <div *ngIf='_http.errorMessage'>
-        <p>Sorry, fetching limit reached. Please wait 1 minute and then refresh the page.</p>
-    </div>
-    
-    <div>
-        <div *ngIf='_http.recipeList' class="cards">
-            <div *ngFor='let hit of _http.recipeList.hits' class="recipe-card" (click)='openRecipeDetails(hit.recipe)' #recipeCard @recipeAnimationTrigger>
-                <div class="content" >
-                    <p class="recipe-title">{{hit.recipe.label}}</p>
-                    <p>Source: {{hit.recipe.source}}</p>
-                    <p>Coocking time: {{hit.recipe.totalTime > 0 ?  hit.recipe.totalTime + ' minutes' : 'Depends on you'}}</p>
-                    <p>Calories: {{_http.formatNumber(hit.recipe.calories)}}</p>
+        <div *ngIf='_http.errorMessage'>
+            <p>Sorry, fetching limit reached. Please wait 1 minute and then refresh the page.</p>
+        </div>
+        
+        <div>
+            <div *ngIf='_http.recipeList' class="cards">
+                <div *ngFor='let hit of _http.recipeList.hits' class="recipe-card" (click)='openRecipeDetails(hit.recipe)' @recipeAnimationTrigger>
+                    <div class="content" >
+                        <p class="recipe-title">{{hit.recipe.label}}</p>
+                        <p>Source: {{hit.recipe.source}}</p>
+                        <p>Coocking time: {{hit.recipe.totalTime > 0 ?  hit.recipe.totalTime + ' minutes' : 'Depends on you'}}</p>
+                        <p>Calories: {{_http.formatNumber(hit.recipe.calories)}}</p>
+                    </div>
+                    <img src={{hit.recipe.image}}/>
                 </div>
-                <img src={{hit.recipe.image}}/>
-            </div>
-        </div>    
+                
+                <!-- If searched recipe does not exist type recipes not found -->
+                <div *ngIf='_http.recipeList.count === 0'>
+                    <p>No recipes found</p>
+                </div>
+
+            </div>    
+        </div>
     </div>
 </div>
 
 <!-- PopUp section -->
 <div id="comp-render" *ngIf="_http.displayRecipeDetails">
-    <app-recipe-details></app-recipe-details>
+    <app-recipe-details [@popUpAnimation]></app-recipe-details>
 </div>
 
 
-<!-- *ngIf="loading" -->
-<app-loading-indicator *ngIf="_http.loading">Loading...</app-loading-indicator>
+

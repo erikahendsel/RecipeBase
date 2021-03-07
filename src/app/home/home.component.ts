@@ -26,10 +26,19 @@ import { trigger, transition, animate, style, query, stagger } from '@angular/an
         animate('500ms', style({ opacity: 0 }))
       ])
     ]),
+    trigger('popUpAnimation', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('500ms', style({ opacity: 1 })),
+      ]),
+      transition(':leave', [
+        animate('500ms', style({ opacity: 0 }))
+      ])
+    ]),
   ]
 })
 
-export class HomeComponent implements OnInit, OnChanges {
+export class HomeComponent implements OnInit {
   @HostBinding('@pageAnimations')
   // @HostBinding('@recipeAnimationTrigger')
   @ViewChild('recipeCard', {static: true}) recipeCard: ElementRef<HTMLDivElement>;
@@ -38,9 +47,6 @@ export class HomeComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this._http.randomfunc();
-  }
-  ngOnChanges() {
-
   }
 
   openRecipeDetails(rndRecipe: any) {

@@ -2,7 +2,13 @@
 
 .loading-container {
   position: absolute;
-  top: 25%;
+  top: 3em;
+  left: 10%;
+  z-index: 50;
+  background-color: $secondary-color;
+  padding-right: 5rem;
+  padding-bottom: 5rem;
+  border-bottom-right-radius: 50%;
 }
 .loading-container ul {
   position: relative;
