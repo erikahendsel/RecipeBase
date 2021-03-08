@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
   constructor(public _http: RecipeHttpService) {}
 
   ngOnInit() {
-    this._http.randomfunc();
+    this._http.fetchRecipes();
   }
 
   openRecipeDetails(rndRecipe: any) {

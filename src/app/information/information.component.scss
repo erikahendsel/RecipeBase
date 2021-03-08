@@ -4,6 +4,7 @@
   width: 80%;
   margin: 0 auto;
   margin-top: 3em;
+  margin-bottom: 5em;
 }
 .info-image {
   float: left;
@@ -11,10 +12,17 @@
   height: auto;
   padding-right: 1.5rem;
   padding-bottom: 1.5rem;
+  max-width: 500px;
+}
+.title,
+.main-title {
+  font-size: $font-big;
+}
+.main-title {
+  margin: 2em 0;
 }
 .title {
-  margin-bottom: 1em;
-  font-size: $font-big;
+  margin: 2em 0 1em 0;
 }
 .faq {
   clear: both;

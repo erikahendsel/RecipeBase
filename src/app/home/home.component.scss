@@ -1,7 +1,12 @@
 @import "../../style_variables.scss";
 
+p {
+  line-height: 28px;
+  font-size: $font-small;
+}
 .home-container {
   position: relative;
+  margin-bottom: 5em;
 }
 .cards {
   display: grid;
@@ -30,7 +35,7 @@
 }
 .recipe-title {
   font-weight: bold;
-  font-size: $font-big;
+  font-size: $font-medium;
   min-height: 45px;
   margin-bottom: 0.5em;
 }

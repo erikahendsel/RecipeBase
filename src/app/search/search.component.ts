@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
     event.preventDefault();
     this._http.savedInput = this._http.onchangeInput;
     console.log(this._http.savedInput)
-    this._http.randomfunc();
+    this._http.fetchRecipes();
   }
 
 }

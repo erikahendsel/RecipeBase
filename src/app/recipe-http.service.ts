@@ -26,7 +26,7 @@ export class RecipeHttpService {
     return (Math.round(num*100)/100).toFixed(0); 
   }
   
-  randomfunc() {
+  fetchRecipes() {
     this.loading = true;
     this.getRecipes(this.savedInput)
     .pipe(
