@@ -14,11 +14,24 @@ header {
 a {
   color: white;
   text-decoration: none;
+  .line {
+    width: 0%;
+    height: 2px;
+    transition: all 0.4s ease-in-out;
+  }
+  &:hover {
+    .line {
+      width: 100%;
+      background: $secondary-color;
+      transition: all 0.4s ease;
+    }
+  }
 }
 a.logo {
   font-weight: bold;
   font-family: $secondary-font;
   color: $sub-color;
+  font-size: $font-big;
   // display: none;
 }
 .menu-bar {

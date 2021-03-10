@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, OnChanges, Input, SimpleChange, HostBinding} from '@angular/core';
+import { Component, OnChanges, Input, HostBinding, SimpleChanges} from '@angular/core';
 import { RecipeHttpService } from '../recipe-http.service';
 import { trigger, transition, animate, style, query, stagger } from '@angular/animations';
 
@@ -11,9 +11,7 @@ import { trigger, transition, animate, style, query, stagger } from '@angular/an
       transition(':enter', [
         query('.search-field', [
           style({opacity: 0}),
-          stagger(-30, [
-            animate('1000ms cubic-bezier(0.35, 0, 0.25, 1)', style({ opacity: 1}))
-          ])
+          animate('400ms', style({ opacity: 1 }))
         ])
       ])
     ]),
@@ -38,15 +36,27 @@ import { trigger, transition, animate, style, query, stagger } from '@angular/an
   ]
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnChanges {
+  @Input() valueOfRecipeListQKeyword: string;
   @HostBinding('@pageAnimations')
-  // @HostBinding('@recipeAnimationTrigger')
-  @ViewChild('recipeCard', {static: true}) recipeCard: ElementRef<HTMLDivElement>;
-
+  public animatePage = true;
+  
   constructor(public _http: RecipeHttpService) {}
 
+  //Here we make sure that valueOfRecipeListQKeywords gets this._http.recipeList.q value. If changes have not been made to _http_recipeList.q then valueOfRecipeListQKeywords will keep the original value.
   ngOnInit() {
-    this._http.fetchRecipes();
+    this.valueOfRecipeListQKeyword = this._http.recipeList.q;
+    if(this.valueOfRecipeListQKeyword === undefined) {
+      //Only runs once on page load, since at the very beginning the valueOfRecipeListQKeyword is undefined.
+      this._http.fetchRecipes();
+    }
+  }
+
+  //Runs after it sees changes in this.valueOfRecipeListQKeyword. So if we change the router then fetchRecipes() function will not run.
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.currentValue !== changes.previousValue) {
+      this._http.fetchRecipes();
+    }
   }
 
   openRecipeDetails(rndRecipe: any) {

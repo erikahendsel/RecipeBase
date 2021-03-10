@@ -3,6 +3,8 @@ import {
     transition, animate, style, query
   } from '@angular/animations';
   
+  //Example of Angular animations link: https://stackblitz.com/angular/ngqvdrgyoek?file=src%2Fapp%2Fhero-list-page.component.ts
+  
   // Routable animations
   export const slideInAnimation =
     trigger('routeAnimations', [
