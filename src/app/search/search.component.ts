@@ -10,18 +10,15 @@ export class SearchComponent implements OnInit {
   constructor(public _http: RecipeHttpService) { }
 
   ngOnInit(): void {
-    // this.initAnimations2()
   }
 
   updateSearch(event: any) {
-    console.log(event.target.value)
     this._http.onchangeInput = event.target.value;
   }
 
   fireSearch(event: any) {
     event.preventDefault();
     this._http.savedInput = this._http.onchangeInput;
-    console.log(this._http.savedInput)
     this._http.fetchRecipes();
   }
 

@@ -35,11 +35,9 @@ export class RecipeHttpService {
     .subscribe(
       success => {
         this.recipeList = success;
-        console.log('success:', success, 'value of recipeList: ' + this.recipeList.q);
       },
       error =>{
         this.errorMessage = error;
-        console.log('error:', typeof this.errorMessage , this.errorMessage);
       },
     );
   }

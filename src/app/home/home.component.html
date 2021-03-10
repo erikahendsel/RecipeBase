@@ -1,10 +1,12 @@
 
+            <!-- *ngIf="_http.loading" -->
+        <app-loading-indicator *ngIf="_http.loading">Loading...</app-loading-indicator>
 <div>
     <app-search></app-search>
 
-    <!-- *ngIf="_http.loading" -->
+
     <div class="home-container">
-        <app-loading-indicator *ngIf="_http.loading">Loading...</app-loading-indicator>
+
 
         <div *ngIf='_http.errorMessage'>
             <p>Sorry, fetching limit reached. Please wait 1 minute and then refresh the page.</p>
@@ -16,7 +18,7 @@
                     <div class="content" >
                         <p class="recipe-title">{{hit.recipe.label}}</p>
                         <p>Source: {{hit.recipe.source}}</p>
-                        <p>Coocking time: {{hit.recipe.totalTime > 0 ?  hit.recipe.totalTime + ' minutes' : 'Depends on you'}}</p>
+                        <p>Cooking time: {{hit.recipe.totalTime > 0 ?  hit.recipe.totalTime + ' minutes' : 'Depends on you'}}</p>
                         <p>Calories: {{_http.formatNumber(hit.recipe.calories)}}</p>
                     </div>
                     <img src={{hit.recipe.image}}/>
